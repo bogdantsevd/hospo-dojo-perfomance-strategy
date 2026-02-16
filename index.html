@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOSPO DOJO - Performance Strategy Board</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>HOSPO DOJO - Performance Marketing Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -20,6 +20,7 @@
             --accent-danger: #ff3366;
             --accent-warning: #ffaa00;
             --accent-info: #00aaff;
+            --accent-purple: #8b5cf6;
             --text-primary: #ffffff;
             --text-secondary: #8b92a1;
             --border: #2a2f3a;
@@ -60,7 +61,7 @@
         }
 
         .board-title {
-            font-family: 'Space Mono', monospace;
+            font-family: 'Space Grotesk', monospace;
             font-size: 72px;
             font-weight: 700;
             letter-spacing: -2px;
@@ -72,16 +73,23 @@
         }
 
         .board-subtitle {
-            font-size: 24px;
+            font-size: 28px;
             color: var(--text-secondary);
             font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .board-author {
+            font-size: 18px;
+            color: var(--accent-primary);
+            font-weight: 600;
         }
 
         .board-meta {
             display: flex;
             gap: 30px;
             margin-top: 20px;
-            font-family: 'Space Mono', monospace;
+            font-family: 'Space Grotesk', monospace;
             font-size: 14px;
         }
 
@@ -165,7 +173,7 @@
             border-radius: 6px;
             font-size: 12px;
             font-weight: 700;
-            font-family: 'Space Mono', monospace;
+            font-family: 'Space Grotesk', monospace;
         }
 
         .badge-critical { background: var(--accent-danger); color: white; }
@@ -197,7 +205,7 @@
         .metric-value {
             font-size: 48px;
             font-weight: 800;
-            font-family: 'Space Mono', monospace;
+            font-family: 'Space Grotesk', monospace;
             margin-bottom: 8px;
         }
 
@@ -251,7 +259,7 @@
             border: 1px solid rgba(0, 255, 136, 0.2);
             border-radius: 8px;
             padding: 20px;
-            font-family: 'Space Mono', monospace;
+            font-family: 'Space Grotesk', monospace;
             font-size: 13px;
             margin: 16px 0;
             overflow-x: auto;
@@ -277,72 +285,11 @@
         }
 
         .checklist li::before {
-            content: '□';
+            content: '→';
             position: absolute;
             left: 0;
             color: var(--accent-primary);
             font-size: 20px;
-        }
-
-        .checklist li.checked::before {
-            content: '✓';
-        }
-
-        /* Funnel Cards */
-        .funnel-card {
-            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(102, 126, 234, 0.1) 100%);
-            border: 2px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 24px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .funnel-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .funnel-title {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .funnel-price {
-            font-family: 'Space Mono', monospace;
-            color: var(--accent-primary);
-            font-size: 24px;
-        }
-
-        .funnel-steps {
-            margin: 24px 0;
-            padding-left: 24px;
-            border-left: 3px solid var(--accent-primary);
-        }
-
-        .funnel-step {
-            padding: 12px 0;
-            padding-left: 24px;
-            position: relative;
-            color: var(--text-secondary);
-        }
-
-        .funnel-step::before {
-            content: '↓';
-            position: absolute;
-            left: 0;
-            color: var(--accent-primary);
         }
 
         /* Metrics Grid */
@@ -353,109 +300,278 @@
             margin: 24px 0;
         }
 
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 40px;
-            margin: 32px 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--gradient-4);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 32px;
-            padding-left: 24px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -39px;
-            top: 8px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--accent-primary);
-            border: 3px solid var(--bg-dark);
-        }
-
-        .timeline-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .timeline-content {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Template Sections */
-        .template-section {
-            background: var(--bg-card);
+        /* ICP Cards */
+        .icp-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(139, 92, 246, 0.1) 100%);
             border: 2px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 32px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
-        .template-header {
+        .icp-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 16px;
             margin-bottom: 24px;
             padding-bottom: 16px;
             border-bottom: 2px solid var(--border);
         }
 
-        .template-title {
+        .icp-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            background: var(--gradient-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .icp-title {
+            flex: 1;
+        }
+
+        .icp-name {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .icp-subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .icp-section {
+            margin-top: 20px;
+        }
+
+        .icp-section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .icp-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Photo Placeholder */
+        .photo-placeholder {
+            background: rgba(0, 170, 255, 0.05);
+            border: 2px dashed var(--accent-info);
+            border-radius: 12px;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 24px 0;
+            transition: all 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            background: rgba(0, 170, 255, 0.1);
+            border-color: var(--accent-primary);
+        }
+
+        .photo-placeholder-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .photo-placeholder-text {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* Budget Table */
+        .budget-table {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .budget-table-header {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 16px;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .budget-table-row {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 16px;
+            border-top: 1px solid var(--border);
+            align-items: center;
+        }
+
+        .budget-table-row:hover {
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .budget-value {
+            font-family: 'Space Grotesk', monospace;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .budget-value.highlight {
+            color: var(--accent-primary);
+            font-size: 18px;
+        }
+
+        /* Technical Setup */
+        .setup-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .setup-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .setup-icon {
+            font-size: 48px;
+        }
+
+        .setup-title {
             font-size: 28px;
             font-weight: 800;
         }
 
-        .copy-button {
-            padding: 10px 20px;
-            background: var(--accent-primary);
-            color: var(--bg-dark);
-            border: none;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Space Mono', monospace;
+        .setup-steps {
+            display: grid;
+            gap: 16px;
         }
 
-        .copy-button:hover {
-            background: var(--accent-warning);
-            transform: translateY(-2px);
-        }
-
-        /* Kill Switch Alert */
-        .kill-switch {
-            background: rgba(255, 51, 102, 0.1);
-            border: 2px solid var(--accent-danger);
-            border-radius: 12px;
-            padding: 24px;
-            margin: 24px 0;
-        }
-
-        .kill-switch-title {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--accent-danger);
-            margin-bottom: 12px;
+        .setup-step {
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 4px solid var(--accent-primary);
+            padding: 16px 20px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 12px;
+        }
+
+        .setup-step-number {
+            background: var(--accent-primary);
+            color: var(--bg-dark);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .setup-step-text {
+            flex: 1;
+            font-size: 15px;
+        }
+
+        /* Landing Page Cards */
+        .landing-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(79, 172, 254, 0.1) 100%);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .landing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .landing-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .landing-product {
+            padding: 4px 12px;
+            background: var(--accent-info);
+            color: white;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .landing-content {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Dashboard Metrics */
+        .dashboard-section {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .dashboard-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .metric-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .metric-item {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .metric-item-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .metric-item-value {
+            font-size: 24px;
+            font-weight: 800;
+            font-family: 'Space Grotesk', monospace;
+            color: var(--accent-primary);
         }
 
         /* Responsive */
@@ -478,6 +594,12 @@
 
             .metrics-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .budget-table-header,
+            .budget-table-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
         }
 
@@ -504,47 +626,28 @@
         .card:nth-child(5) { animation-delay: 0.5s; }
         .card:nth-child(6) { animation-delay: 0.6s; }
 
-        /* Tabs */
-        .tabs {
+        /* Scaling Note */
+        .scaling-note {
+            background: linear-gradient(135deg, rgba(255, 170, 0, 0.1) 0%, rgba(255, 51, 102, 0.1) 100%);
+            border: 2px solid var(--accent-warning);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .scaling-note-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--accent-warning);
+            margin-bottom: 12px;
             display: flex;
-            gap: 16px;
-            margin-bottom: 32px;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 16px;
+            align-items: center;
+            gap: 12px;
         }
 
-        .tab {
-            padding: 12px 24px;
-            background: transparent;
+        .scaling-note-content {
             color: var(--text-secondary);
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .tab.active {
-            color: var(--accent-primary);
-        }
-
-        .tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -18px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--accent-primary);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
+            line-height: 1.8;
         }
     </style>
 </head>
@@ -552,11 +655,12 @@
     <div class="board-container">
         <!-- Header -->
         <header class="board-header">
-            <h1 class="board-title">🎯 HOSPO DOJO V2.0</h1>
-            <p class="board-subtitle">Performance Strategy Board</p>
+            <h1 class="board-title">🎯 HOSPO DOJO</h1>
+            <p class="board-subtitle">Performance Marketing Strategy</p>
+            <p class="board-author">Strategy & Execution Plan by Daniel Bogdantsev</p>
             <div class="board-meta">
                 <div class="meta-item">
-                    <span class="meta-badge">16 Feb 2026</span>
+                    <span class="meta-badge">Q1 2026</span>
                 </div>
                 <div class="meta-item">
                     <span style="color: var(--text-secondary);">MAX CAC:</span>
@@ -569,962 +673,806 @@
             </div>
         </header>
 
-        <!-- Key Metrics Dashboard -->
+        <!-- Executive Summary -->
         <div class="section-header">
-            <h2 class="section-title">📊 Core Numbers</h2>
-            <p class="section-subtitle">Memorize these</p>
-        </div>
-
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <div class="metric-value primary">$1,000</div>
-                <div class="metric-label">MAX CAC</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value info">< $60</div>
-                <div class="metric-label">Target CPL</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value warning">< $300</div>
-                <div class="metric-label">Cost per SQL</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value primary">20%+</div>
-                <div class="metric-label">SQL Rate Goal</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value info">30%</div>
-                <div class="metric-label">Close Rate</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value primary">$8,500</div>
-                <div class="metric-label">Consulting Price</div>
-            </div>
-        </div>
-
-        <!-- Critical Insights -->
-        <div class="section-header">
-            <h2 class="section-title">🚨 Critical Insights</h2>
-            <p class="section-subtitle">What changed everything</p>
+            <h2 class="section-title">📊 Strategy Overview</h2>
+            <p class="section-subtitle">My approach for the next 3 months</p>
         </div>
 
         <div class="board-grid">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <span class="card-icon">❌</span>
-                        Problem 1: Wrong Math
-                    </h3>
-                    <span class="card-badge badge-critical">FIXED</span>
-                </div>
-                <div class="card-content">
-                    <p><strong>Old Strategy:</strong> CAC AUD 2,040</p>
-                    <p style="color: var(--accent-danger); font-weight: 700; margin: 12px 0;">⚠️ REALITY: MAX CAC AUD 1,000</p>
-                    <p>This changes the entire strategy! Previous calculations were based on incorrect assumptions.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="card-icon">✅</span>
-                        Problem 2: Webinar Proof
-                    </h3>
-                    <span class="card-badge badge-success">PROVEN</span>
-                </div>
-                <div class="card-content">
-                    <p><strong>Agency Results:</strong> CPL AUD 200-500 (disaster!)</p>
-                    <p style="color: var(--accent-primary); font-weight: 700; margin: 12px 0;">✓ YOU ACHIEVED: CPL AUD 14-55</p>
-                    <p>Meta works when properly set up. This is your unfair advantage.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="card-icon">🔗</span>
-                        Problem 3: Brand Disconnect
-                    </h3>
-                    <span class="card-badge badge-warning">ACTION NEEDED</span>
-                </div>
-                <div class="card-content">
-                    <p><strong>Issue:</strong> Personal brand ≠ Company</p>
-                    <p>No attribution between Instagram (150k followers) → Sales</p>
-                    <div class="code-block">
-                        <pre>Instagram → ??? → Sales
-         ↑
-      Black Box</pre>
-                    </div>
-                    <p>Solution: Multi-touch attribution framework</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
                         <span class="card-icon">🎯</span>
-                        Problem 4: Multi-Product
+                        Core Objective
                     </h3>
-                    <span class="card-badge badge-info">STRATEGIC</span>
                 </div>
                 <div class="card-content">
-                    <p><strong>Reality:</strong> 4 products, not 1!</p>
-                    <ul style="margin: 12px 0; padding-left: 20px; color: var(--text-secondary);">
-                        <li>Kitchen Design (high-ticket)</li>
-                        <li>Consulting (AUD 8.5k - core)</li>
-                        <li>Mentorship (entry point)</li>
-                        <li>Turnkey Opening (highest value)</li>
+                    <p style="font-size: 16px; line-height: 1.8;">My goal is to build a predictable, scalable lead generation system for Paul's multi-product portfolio. I'm focusing on achieving <strong style="color: var(--accent-primary);">cost per SQL under AUD 300</strong> while maintaining quality through a 20%+ SQL rate.</p>
+                    <p style="margin-top: 16px;">This strategy leverages Paul's existing brand strength (150k Instagram), proven webinar performance (CPL AUD 14-55), and a structured product ladder approach.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <span class="card-icon">💰</span>
+                        Budget Philosophy
+                    </h3>
+                </div>
+                <div class="card-content">
+                    <p style="font-size: 16px; line-height: 1.8;">I'm starting with <strong style="color: var(--accent-primary);">AUD 4,250/month</strong> (Month 1) and scaling based on performance. My approach is channel-agnostic: <strong>I'll increase budget by 20-30% monthly on channels that hit KPIs</strong>, and reallocate from underperformers.</p>
+                    <p style="margin-top: 16px;">Meta receives the largest initial allocation due to proven historical performance.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <span class="card-icon">📈</span>
+                        Success Metrics
+                    </h3>
+                </div>
+                <div class="card-content">
+                    <div class="metrics-grid">
+                        <div>
+                            <div style="color: var(--accent-primary); font-weight: 700; font-size: 18px;">< AUD 60</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Cost per Lead</div>
+                        </div>
+                        <div>
+                            <div style="color: var(--accent-primary); font-weight: 700; font-size: 18px;">20%+</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Lead → SQL Rate</div>
+                        </div>
+                        <div>
+                            <div style="color: var(--accent-primary); font-weight: 700; font-size: 18px;">< AUD 300</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Cost per SQL</div>
+                        </div>
+                        <div>
+                            <div style="color: var(--accent-primary); font-weight: 700; font-size: 18px;">30%</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">SQL → Close Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <span class="card-icon">🚀</span>
+                        Key Advantages
+                    </h3>
+                </div>
+                <div class="card-content">
+                    <ul class="checklist">
+                        <li>Paul's 150k Instagram following provides warm retargeting pool</li>
+                        <li>Proven webinar mechanics (CPL AUD 14-55 achieved)</li>
+                        <li>4-product portfolio allows multi-funnel approach</li>
+                        <li>Strong personal brand reduces cold acquisition costs</li>
+                        <li>Meta CAPI already implemented and working</li>
                     </ul>
-                    <p style="color: var(--accent-primary);">= Need different funnels!</p>
                 </div>
             </div>
         </div>
 
         <!-- Budget Allocation -->
         <div class="section-header">
-            <h2 class="section-title">💰 Budget Allocation</h2>
-            <p class="section-subtitle">AUD 5,000/month - Phase 1</p>
+            <h2 class="section-title">💰 Budget Allocation Strategy</h2>
+            <p class="section-subtitle">3-month roadmap with dynamic scaling</p>
         </div>
 
-        <div class="board-grid">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="card-icon">📱</span>
-                        Meta Ads
-                    </h3>
-                    <span class="card-badge badge-primary">60% - AUD 3,000</span>
-                </div>
-                <div class="card-content">
-                    <p><strong>Why:</strong> Proven to work (webinar data CPL AUD 14-55)</p>
-                    <div class="metrics-grid" style="margin-top: 16px;">
-                        <div>
-                            <div style="color: var(--accent-primary); font-weight: 700;">AUD 170/day</div>
-                            <div style="font-size: 13px;">Daily Budget</div>
-                        </div>
-                        <div>
-                            <div style="color: var(--accent-primary); font-weight: 700;">3-5 leads/day</div>
-                            <div style="font-size: 13px;">Expected Volume</div>
-                        </div>
-                    </div>
-                    <p style="margin-top: 16px;"><strong>Focus:</strong> Retargeting first, then scale to cold</p>
-                </div>
+        <div class="budget-table">
+            <div class="budget-table-header">
+                <div>CHANNEL</div>
+                <div>MONTH 1</div>
+                <div>MONTH 2</div>
+                <div>MONTH 3</div>
+                <div>SCALING LOGIC</div>
             </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="card-icon">🔍</span>
-                        Google Search
-                    </h3>
-                    <span class="card-badge badge-info">30% - AUD 1,500</span>
-                </div>
-                <div class="card-content">
-                    <p><strong>Why:</strong> High-intent capture</p>
-                    <div class="metrics-grid" style="margin-top: 16px;">
-                        <div>
-                            <div style="color: var(--accent-info); font-weight: 700;">AUD 85/day</div>
-                            <div style="font-size: 13px;">Daily Budget</div>
-                        </div>
-                        <div>
-                            <div style="color: var(--accent-info); font-weight: 700;">1-2 leads/day</div>
-                            <div style="font-size: 13px;">Expected Volume</div>
-                        </div>
-                    </div>
-                    <p style="margin-top: 16px;"><strong>Strategy:</strong> Brand protection + high-intent keywords</p>
-                </div>
+            <div class="budget-table-row">
+                <div style="font-weight: 700;">📱 Meta Ads</div>
+                <div class="budget-value highlight">AUD 3,500</div>
+                <div class="budget-value">AUD 2,500</div>
+                <div class="budget-value">AUD 750</div>
+                <div style="font-size: 13px; color: var(--text-secondary);">Start high (proven), reallocate Month 2-3</div>
             </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="card-icon">💼</span>
-                        LinkedIn
-                    </h3>
-                    <span class="card-badge badge-warning">10% - AUD 500</span>
-                </div>
-                <div class="card-content">
-                    <p><strong>Why:</strong> Quality control + testing</p>
-                    <div class="metrics-grid" style="margin-top: 16px;">
-                        <div>
-                            <div style="color: var(--accent-warning); font-weight: 700;">AUD 25/day</div>
-                            <div style="font-size: 13px;">Daily Budget</div>
-                        </div>
-                        <div>
-                            <div style="color: var(--accent-warning); font-weight: 700;">35-45%</div>
-                            <div style="font-size: 13px;">SQL Rate (highest)</div>
-                        </div>
-                    </div>
-                    <p style="margin-top: 16px;"><strong>Target:</strong> Sniper targeting on owners/GMs</p>
-                </div>
+            <div class="budget-table-row">
+                <div style="font-weight: 700;">🔍 Google Search</div>
+                <div class="budget-value">AUD 750</div>
+                <div class="budget-value">AUD 1,200</div>
+                <div class="budget-value highlight">AUD 2,500</div>
+                <div style="font-size: 13px; color: var(--text-secondary);">Scale if SQL quality high</div>
+            </div>
+            <div class="budget-table-row">
+                <div style="font-weight: 700;">💼 LinkedIn Ads</div>
+                <div class="budget-value">AUD 0</div>
+                <div class="budget-value">AUD 500</div>
+                <div class="budget-value">AUD 1,750</div>
+                <div style="font-size: 13px; color: var(--text-secondary);">Launch Month 2, scale Month 3</div>
+            </div>
+            <div class="budget-table-row">
+                <div style="font-weight: 700;">📺 YouTube (Test)</div>
+                <div class="budget-value">AUD 0</div>
+                <div class="budget-value">AUD 300</div>
+                <div class="budget-value">AUD 500</div>
+                <div style="font-size: 13px; color: var(--text-secondary);">Test channel Month 2+</div>
+            </div>
+            <div class="budget-table-row" style="background: rgba(0, 255, 136, 0.1); font-weight: 700;">
+                <div>TOTAL MONTHLY</div>
+                <div class="budget-value primary">AUD 4,250</div>
+                <div class="budget-value primary">AUD 4,500</div>
+                <div class="budget-value primary">AUD 5,500</div>
+                <div></div>
             </div>
         </div>
 
-        <!-- Kill Switches -->
-        <div class="kill-switch">
-            <div class="kill-switch-title">
-                <span>⚠️</span>
-                <span>KILL SWITCHES - When to Stop</span>
+        <div class="scaling-note">
+            <div class="scaling-note-title">
+                <span>⚡</span>
+                <span>Dynamic Scaling Rules</span>
             </div>
-            <div class="board-grid" style="margin-top: 16px;">
+            <div class="scaling-note-content">
+                <p style="margin-bottom: 12px;"><strong>My scaling approach:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="padding: 8px 0;">✅ <strong>If Cost per SQL < AUD 250 for 2 weeks:</strong> Increase budget +30%</li>
+                    <li style="padding: 8px 0;">➡️ <strong>If Cost per SQL AUD 250-350:</strong> Hold budget, optimize creative</li>
+                    <li style="padding: 8px 0;">❌ <strong>If Cost per SQL > AUD 400 for 7 days:</strong> Cut budget -50%, reallocate to winners</li>
+                </ul>
+                <p style="margin-top: 16px; font-style: italic;">This ensures I'm always investing in what's working and cutting losses quickly.</p>
+            </div>
+        </div>
+
+        <!-- ICP Section -->
+        <div class="section-header">
+            <h2 class="section-title">🎯 Ideal Customer Profiles</h2>
+            <p class="section-subtitle">Who I'm targeting for each product</p>
+        </div>
+
+        <!-- ICP 1: Mentorship -->
+        <div class="icp-card">
+            <div class="icp-header">
+                <div class="icp-avatar">🌱</div>
+                <div class="icp-title">
+                    <div class="icp-name">Sarah - The First-Timer</div>
+                    <div class="icp-subtitle">Mentorship Program</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="color: var(--accent-primary); font-weight: 700; font-size: 24px;">AUD 3-5k</div>
+                    <div style="font-size: 13px; color: var(--text-secondary);">Price Point</div>
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">👤 DEMOGRAPHICS</div>
+                <div class="icp-content">
+                    <strong>Age:</strong> 28-42<br>
+                    <strong>Location:</strong> Major Australian cities (Sydney, Melbourne, Brisbane)<br>
+                    <strong>Role:</strong> First-time cafe/restaurant owner, or about to open<br>
+                    <strong>Background:</strong> Career changer, hospitality worker going solo, corporate refugee
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">🏢 BUSINESS CHARACTERISTICS</div>
+                <div class="icp-content">
+                    <strong>Venue Type:</strong> Small cafe, brunch spot, or casual dining (15-40 seats)<br>
+                    <strong>Stage:</strong> Pre-opening (3-6 months out) or first 6 months of operation<br>
+                    <strong>Team Size:</strong> 3-8 staff<br>
+                    <strong>Monthly Revenue:</strong> AUD 30-80k (or projected)
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">😰 PAIN POINTS</div>
+                <div class="icp-content">
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li>→ "I have no idea what I'm doing" - overwhelming operational complexity</li>
+                        <li>→ Can't afford full consulting (AUD 8.5k feels too steep)</li>
+                        <li>→ Scared of making expensive mistakes in first 90 days</li>
+                        <li>→ Drowning in advice from suppliers, no trusted guide</li>
+                        <li>→ Worried about running out of cash before breaking even</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">🎯 GOALS & MOTIVATIONS</div>
+                <div class="icp-content">
+                    <strong>Primary Goal:</strong> Survive first year without going broke<br>
+                    <strong>Secondary Goal:</strong> Build something they're proud of<br>
+                    <strong>Trigger:</strong> Just signed lease / 3 months from opening / first month live and panicking
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">📱 WHERE THEY HANG OUT</div>
+                <div class="icp-content">
+                    <strong>Social:</strong> Instagram (following hospitality accounts, designers, Paul)<br>
+                    <strong>Search:</strong> "how to open a cafe Australia", "hospitality mentor", "restaurant startup coach"<br>
+                    <strong>Communities:</strong> Hospitality Facebook groups, local business meetups
+                </div>
+            </div>
+        </div>
+
+        <!-- ICP 2: Consulting -->
+        <div class="icp-card">
+            <div class="icp-header">
+                <div class="icp-avatar">📊</div>
+                <div class="icp-title">
+                    <div class="icp-name">Mark - The Established Operator</div>
+                    <div class="icp-subtitle">Consulting Program</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="color: var(--accent-info); font-weight: 700; font-size: 24px;">AUD 8.5k</div>
+                    <div style="font-size: 13px; color: var(--text-secondary);">Price Point</div>
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">👤 DEMOGRAPHICS</div>
+                <div class="icp-content">
+                    <strong>Age:</strong> 35-55<br>
+                    <strong>Location:</strong> Australia-wide (established markets + regional)<br>
+                    <strong>Role:</strong> Owner/Operator, General Manager, Partner in 1-3 venue group<br>
+                    <strong>Background:</strong> 5-15 years in hospitality, built business from ground up
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">🏢 BUSINESS CHARACTERISTICS</div>
+                <div class="icp-content">
+                    <strong>Venue Type:</strong> Restaurant, pub, hotel, or 2-3 location group<br>
+                    <strong>Stage:</strong> Operating 2+ years, hit a plateau<br>
+                    <strong>Team Size:</strong> 15-40 staff<br>
+                    <strong>Monthly Revenue:</strong> AUD 150-500k<br>
+                    <strong>Current Profit:</strong> Breaking even or slim margins (5-10%)
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">😰 PAIN POINTS</div>
+                <div class="icp-content">
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li>→ "Working 80-hour weeks for minimal profit" - burnout imminent</li>
+                        <li>→ Food costs creeping up (35%+), don't know how to fix</li>
+                        <li>→ Labor costs killing margins (45%+), overtime bleeding cash</li>
+                        <li>→ Kitchen inefficiencies = slow service = bad reviews</li>
+                        <li>→ Want to expand but current ops are chaotic</li>
+                        <li>→ Secretly jealous of newer venues doing better</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">🎯 GOALS & MOTIVATIONS</div>
+                <div class="icp-content">
+                    <strong>Primary Goal:</strong> Add AUD 100k+ to annual profit without working harder<br>
+                    <strong>Secondary Goal:</strong> Systematize operations so business can run without them<br>
+                    <strong>Trigger:</strong> Bad quarter, considering selling, or inspired by competitor's success
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">📱 WHERE THEY HANG OUT</div>
+                <div class="icp-content">
+                    <strong>Social:</strong> Instagram (business accounts), LinkedIn (connecting with suppliers)<br>
+                    <strong>Search:</strong> "restaurant profitability consultant", "hospitality operations expert", "reduce food costs"<br>
+                    <strong>Communities:</strong> Industry associations, supplier events, trade shows
+                </div>
+            </div>
+        </div>
+
+        <!-- ICP 3: Kitchen Design -->
+        <div class="icp-card">
+            <div class="icp-header">
+                <div class="icp-avatar">🏗️</div>
+                <div class="icp-title">
+                    <div class="icp-name">Alex - The Expander</div>
+                    <div class="icp-subtitle">Kitchen Design Services</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="color: var(--accent-danger); font-weight: 700; font-size: 24px;">AUD 25k+</div>
+                    <div style="font-size: 13px; color: var(--text-secondary);">Price Point</div>
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">👤 DEMOGRAPHICS</div>
+                <div class="icp-content">
+                    <strong>Age:</strong> 40-60<br>
+                    <strong>Location:</strong> Major cities + growth corridors<br>
+                    <strong>Role:</strong> Multi-venue owner, property developer, investor<br>
+                    <strong>Background:</strong> Successful operator expanding, or funded entrepreneur
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">🏢 BUSINESS CHARACTERISTICS</div>
+                <div class="icp-content">
+                    <strong>Project Type:</strong> New build, major renovation, or adding 2nd/3rd location<br>
+                    <strong>Stage:</strong> Signed lease or in design phase<br>
+                    <strong>Investment:</strong> AUD 500k - 2M+ total project budget<br>
+                    <strong>Timeline:</strong> 6-12 months from start to open
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">😰 PAIN POINTS</div>
+                <div class="icp-content">
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li>→ Last kitchen design was a disaster (too small, bad flow, expensive rework)</li>
+                        <li>→ Architects don't understand commercial kitchen operations</li>
+                        <li>→ Afraid of compliance issues delaying opening</li>
+                        <li>→ Want kitchen that pays for itself through efficiency</li>
+                        <li>→ Need someone who's designed 50+ kitchens (not learning on their dime)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">🎯 GOALS & MOTIVATIONS</div>
+                <div class="icp-content">
+                    <strong>Primary Goal:</strong> Get kitchen design right the first time (expensive to redo)<br>
+                    <strong>Secondary Goal:</strong> Maximize efficiency = lower labor costs forever<br>
+                    <strong>Trigger:</strong> Signed lease, started design phase, frustrated with architect's lack of expertise
+                </div>
+            </div>
+
+            <div class="icp-section">
+                <div class="icp-section-title">📱 WHERE THEY HANG OUT</div>
+                <div class="icp-content">
+                    <strong>Social:</strong> LinkedIn (business-focused), Instagram (researching design)<br>
+                    <strong>Search:</strong> "commercial kitchen design Australia", "restaurant fitout consultant", "kitchen efficiency expert"<br>
+                    <strong>Communities:</strong> Property developer networks, hospitality investment groups
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Setup Roadmap -->
+        <div class="section-header">
+            <h2 class="section-title">🔧 Technical Setup Roadmap</h2>
+            <p class="section-subtitle">Foundation that enables everything else</p>
+        </div>
+
+        <div style="background: rgba(255, 170, 0, 0.1); border: 2px solid var(--accent-warning); border-radius: 12px; padding: 24px; margin-bottom: 32px;">
+            <div style="font-size: 20px; font-weight: 800; color: var(--accent-warning); margin-bottom: 12px;">
+                ⚡ Meta Stack Status: ✅ DONE
+            </div>
+            <p style="color: var(--text-secondary);">Meta Pixel, CAPI, and core tracking are already implemented and working. The focus below is on Google and LinkedIn setup.</p>
+        </div>
+
+        <!-- Google Stack -->
+        <div class="setup-card">
+            <div class="setup-header">
+                <div class="setup-icon">🔍</div>
                 <div>
-                    <h4 style="color: var(--accent-danger); margin-bottom: 8px;">Channel Level:</h4>
-                    <ul class="checklist">
-                        <li>KILL if: Cost per SQL > AUD 400 for 7 days → reallocate 50%</li>
-                        <li>HOLD if: Cost per SQL AUD 250-350 → maintain, optimize</li>
-                        <li class="checked">SCALE if: Cost per SQL < AUD 250 for 2 weeks → increase +30%</li>
+                    <div class="setup-title">Google Marketing Stack</div>
+                    <div style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;">Essential for Search & Display campaigns</div>
+                </div>
+            </div>
+
+            <div class="setup-steps">
+                <div class="setup-step">
+                    <div class="setup-step-number">1</div>
+                    <div class="setup-step-text">
+                        <strong>Google Analytics 4 (GA4)</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Create property, implement tracking, configure goals (form submits, calendar bookings)</span>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="setup-step-number">2</div>
+                    <div class="setup-step-text">
+                        <strong>Google Tag Manager (GTM)</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Container setup, GA4 tag, conversion tracking tags, event triggers</span>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="setup-step-number">3</div>
+                    <div class="setup-step-text">
+                        <strong>Google Ads Conversion Tracking</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Lead conversion action, phone call tracking, import GA4 conversions</span>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="setup-step-number">4</div>
+                    <div class="setup-step-text">
+                        <strong>Google Search Console</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Verify domain, connect to GA4, monitor organic performance</span>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="setup-step-number">5</div>
+                    <div class="setup-step-text">
+                        <strong>Looker Studio Dashboard</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Connect all data sources, build weekly reporting dashboard</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px; padding: 16px; background: rgba(0, 255, 136, 0.05); border-radius: 8px;">
+                <strong style="color: var(--accent-primary);">Timeline:</strong> Week 1 (Days 1-3)<br>
+                <strong style="color: var(--accent-primary);">Priority:</strong> Must be done before launching Google campaigns
+            </div>
+        </div>
+
+        <!-- LinkedIn Stack -->
+        <div class="setup-card">
+            <div class="setup-header">
+                <div class="setup-icon">💼</div>
+                <div>
+                    <div class="setup-title">LinkedIn Marketing Stack</div>
+                    <div style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;">High-quality B2B targeting for decision-makers</div>
+                </div>
+            </div>
+
+            <div class="setup-steps">
+                <div class="setup-step">
+                    <div class="setup-step-number">1</div>
+                    <div class="setup-step-text">
+                        <strong>Campaign Manager Setup</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Link company page, add payment method, configure account settings</span>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="setup-step-number">2</div>
+                    <div class="setup-step-text">
+                        <strong>LinkedIn Insight Tag</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Install via GTM, verify firing, create website audiences</span>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="setup-step-number">3</div>
+                    <div class="setup-step-text">
+                        <strong>Lead Gen Forms</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Create forms for each product, configure auto-fill, set up thank-you messages</span>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="setup-step-number">4</div>
+                    <div class="setup-step-text">
+                        <strong>Conversion Tracking</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Set up conversion actions (lead, calendar booking), test tracking</span>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="setup-step-number">5</div>
+                    <div class="setup-step-text">
+                        <strong>CRM Integration</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Connect to CRM via Zapier/native integration, auto-sync leads</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px; padding: 16px; background: rgba(0, 255, 136, 0.05); border-radius: 8px;">
+                <strong style="color: var(--accent-primary);">Timeline:</strong> Week 2 (before LinkedIn launch)<br>
+                <strong style="color: var(--accent-primary);">Priority:</strong> Required for Month 2 LinkedIn campaigns
+            </div>
+        </div>
+
+        <!-- YouTube Setup -->
+        <div class="setup-card">
+            <div class="setup-header">
+                <div class="setup-icon">📺</div>
+                <div>
+                    <div class="setup-title">YouTube Ads (Test Channel)</div>
+                    <div style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;">Pre-roll ads on hospitality & business content</div>
+                </div>
+            </div>
+
+            <div class="setup-steps">
+                <div class="setup-step">
+                    <div class="setup-step-number">1</div>
+                    <div class="setup-step-text">
+                        <strong>Link YouTube Channel</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Connect Paul's YouTube to Google Ads account</span>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="setup-step-number">2</div>
+                    <div class="setup-step-text">
+                        <strong>Video Creative Preparation</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">6-second bumper ads + 15-30 second pre-roll (from Paul's content)</span>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="setup-step-number">3</div>
+                    <div class="setup-step-text">
+                        <strong>Audience Targeting</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">Target: Hospitality channels, business/entrepreneur content, Gordon Ramsay viewers</span>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="setup-step-number">4</div>
+                    <div class="setup-step-text">
+                        <strong>Test Campaign Launch</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 13px;">AUD 300/month budget, optimize for conversions, retarget viewers on Meta</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px; padding: 16px; background: rgba(0, 255, 136, 0.05); border-radius: 8px;">
+                <strong style="color: var(--accent-primary);">Timeline:</strong> Month 2 (after Google campaigns proven)<br>
+                <strong style="color: var(--accent-primary);">Strategy:</strong> Test channel, cross-platform retargeting opportunity
+            </div>
+        </div>
+
+        <!-- Landing Page Strategy -->
+        <div class="section-header">
+            <h2 class="section-title">🎨 Landing Page Strategy</h2>
+            <p class="section-subtitle">Conversion-optimized pages for each funnel</p>
+        </div>
+
+        <div class="landing-card">
+            <div class="landing-header">
+                <div class="landing-title">LP1: Free Profit Audit</div>
+                <div class="landing-product">CONSULTING</div>
+            </div>
+            <div class="landing-content">
+                <strong>Primary CTA:</strong> Book 15-minute diagnostic call<br>
+                <strong>Hero Section:</strong> "Most Australian restaurants lose $4,000+/month. Find your profit leaks in 15 minutes."<br>
+                <strong>Social Proof:</strong> 500+ venues audited, testimonials from Mark, Sarah (video)<br>
+                <strong>Conversion Elements:</strong> Calendly embed, Paul video (30 sec intro), trust badges<br>
+                <strong>Exit Intent:</strong> PDF download "7 Profit Killers" as lead magnet
+            </div>
+        </div>
+
+        <div class="landing-card">
+            <div class="landing-header">
+                <div class="landing-title">LP2: First 90 Days Guide</div>
+                <div class="landing-product" style="background: var(--accent-primary);">MENTORSHIP</div>
+            </div>
+            <div class="landing-content">
+                <strong>Primary CTA:</strong> Download guide → Application form<br>
+                <strong>Hero Section:</strong> "90% of new cafes fail in year one. Here's how to be in the 10%."<br>
+                <strong>Social Proof:</strong> Success stories from first-time owners, before/after numbers<br>
+                <strong>Conversion Elements:</strong> Lead magnet (PDF), email sequence (5 emails), application qualifier<br>
+                <strong>Retargeting:</strong> Show mentorship program details to guide downloaders
+            </div>
+        </div>
+
+        <div class="landing-card">
+            <div class="landing-header">
+                <div class="landing-title">LP3: Kitchen Design Portfolio</div>
+                <div class="landing-product" style="background: var(--accent-danger);">KITCHEN DESIGN</div>
+            </div>
+            <div class="landing-content">
+                <strong>Primary CTA:</strong> Book site visit<br>
+                <strong>Hero Section:</strong> "The kitchen that pays for itself. 50+ commercial kitchens designed for flow."<br>
+                <strong>Social Proof:</strong> Portfolio gallery (before/after), ROI case study (AUD 8k/month savings)<br>
+                <strong>Conversion Elements:</strong> Interactive portfolio filter (cafe/restaurant/bar), 3D renderings, compliance checklist<br>
+                <strong>Qualification:</strong> Brief form (project type, timeline, budget) before site visit booking
+            </div>
+        </div>
+
+        <div class="landing-card">
+            <div class="landing-header">
+                <div class="landing-title">LP4: Webinar Registration</div>
+                <div class="landing-product" style="background: var(--accent-info);">ALL PRODUCTS</div>
+            </div>
+            <div class="landing-content">
+                <strong>Primary CTA:</strong> Register for live webinar<br>
+                <strong>Hero Section:</strong> "$50k Profit Audit - Live Breakdown" (proven offer, CPL AUD 14-55)<br>
+                <strong>Social Proof:</strong> Previous attendee testimonials, "1,200+ operators trained"<br>
+                <strong>Conversion Elements:</strong> Countdown timer, agenda preview, Paul video invite<br>
+                <strong>Follow-up:</strong> Email sequence → offer based on product fit (consulting/mentorship)
+            </div>
+        </div>
+
+        <div style="margin-top: 32px; padding: 24px; background: var(--bg-card); border: 2px solid var(--border); border-radius: 12px;">
+            <h4 style="font-size: 20px; font-weight: 800; margin-bottom: 16px; color: var(--accent-primary);">A/B Testing Roadmap</h4>
+            <div class="board-grid">
+                <div>
+                    <strong style="color: var(--text-primary);">Month 1 Tests:</strong>
+                    <ul class="checklist" style="margin-top: 8px; font-size: 14px;">
+                        <li>Headline variations (pain-focused vs. outcome-focused)</li>
+                        <li>Video vs. static hero image</li>
+                        <li>CTA button copy ("Book Call" vs. "Get Audit")</li>
                     </ul>
                 </div>
                 <div>
-                    <h4 style="color: var(--accent-danger); margin-bottom: 8px;">Ad Set Level:</h4>
-                    <ul class="checklist">
-                        <li>PAUSE if: Spend > AUD 120 with 0 leads</li>
-                        <li>PAUSE if: CPL > AUD 100 for 3 days</li>
-                        <li class="checked">SCALE if: CPL < AUD 40 for 3 days → increase +20%</li>
+                    <strong style="color: var(--text-primary);">Month 2-3 Tests:</strong>
+                    <ul class="checklist" style="margin-top: 8px; font-size: 14px;">
+                        <li>Long-form vs. short-form landing pages</li>
+                        <li>Testimonial placement (hero vs. mid-page)</li>
+                        <li>Form length (3 fields vs. 7 fields)</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- 4 Product Funnels -->
+        <!-- Measurement Dashboard -->
         <div class="section-header">
-            <h2 class="section-title">🎯 Multi-Product Funnel Strategy</h2>
-            <p class="section-subtitle">4 products = 4 different funnels</p>
+            <h2 class="section-title">📊 Measurement Dashboard</h2>
+            <p class="section-subtitle">What I'm tracking weekly</p>
         </div>
 
-        <!-- Funnel 1: Mentorship -->
-        <div class="funnel-card" style="background: linear-gradient(135deg, var(--bg-card) 0%, rgba(67, 233, 123, 0.1) 100%);">
-            <div class="funnel-title">
-                <span>1️⃣</span>
-                <span>MENTORSHIP</span>
-                <span class="funnel-price">AUD 3-5k</span>
+        <div class="dashboard-section">
+            <div class="dashboard-title">
+                <span>📈</span>
+                <span>Weekly Performance Metrics</span>
             </div>
-            <p style="color: var(--text-secondary); margin-bottom: 16px;"><strong>Positioning:</strong> "Get Paul in your corner - without the full consulting price"</p>
-            
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-value primary">< $40</div>
-                    <div class="metric-label">Target CPL</div>
+
+            <h4 style="font-size: 16px; font-weight: 700; color: var(--accent-primary); margin-bottom: 12px; text-transform: uppercase;">Volume Metrics</h4>
+            <div class="metric-group">
+                <div class="metric-item">
+                    <div class="metric-item-label">Total Spend</div>
+                    <div class="metric-item-value">AUD XXX</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">vs. AUD 1,063/week target</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value primary">30%</div>
-                    <div class="metric-label">Lead→SQL Rate</div>
+                <div class="metric-item">
+                    <div class="metric-item-label">Leads Generated</div>
+                    <div class="metric-item-value">XX</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">Target: 15-20/week</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value primary">50%</div>
-                    <div class="metric-label">Close Rate</div>
+                <div class="metric-item">
+                    <div class="metric-item-label">SQLs Generated</div>
+                    <div class="metric-item-value">XX</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">Target: 3-5/week</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value primary">< $260</div>
-                    <div class="metric-label">CAC Target</div>
+                <div class="metric-item">
+                    <div class="metric-item-label">Calls Booked</div>
+                    <div class="metric-item-value">XX</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">SQL → Call rate: 70%+</div>
                 </div>
             </div>
 
-            <div class="funnel-steps">
-                <div class="funnel-step">Paul's Instagram/Podcast (Awareness)</div>
-                <div class="funnel-step">Lead Magnet: "First 90 Days Survival Guide"</div>
-                <div class="funnel-step">Email Sequence: Client success stories</div>
-                <div class="funnel-step">VSL: "Why most cafes fail"</div>
-                <div class="funnel-step">Application: "Is mentorship right for you?"</div>
-                <div class="funnel-step">15-min strategy call</div>
-                <div class="funnel-step" style="color: var(--accent-primary); font-weight: 700;">Close: Mentorship program</div>
-            </div>
-
-            <div style="margin-top: 20px; padding: 16px; background: rgba(0, 255, 136, 0.1); border-radius: 8px;">
-                <strong style="color: var(--accent-primary);">Audience:</strong> New operators, first-time owners<br>
-                <strong style="color: var(--accent-primary);">Budget:</strong> 30% (AUD 1,500)<br>
-                <strong style="color: var(--accent-primary);">Channels:</strong> Meta (warm) + Google (mentor keywords)
-            </div>
-        </div>
-
-        <!-- Funnel 2: Consulting -->
-        <div class="funnel-card" style="background: linear-gradient(135deg, var(--bg-card) 0%, rgba(79, 172, 254, 0.1) 100%);">
-            <div class="funnel-title">
-                <span>2️⃣</span>
-                <span>CONSULTING</span>
-                <span class="funnel-price">AUD 8.5k</span>
-            </div>
-            <p style="color: var(--text-secondary); margin-bottom: 16px;"><strong>Positioning:</strong> "The operations overhaul that adds AUD 100k+ to your bottom line"</p>
-            
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-value info">< $60</div>
-                    <div class="metric-label">Target CPL</div>
+            <h4 style="font-size: 16px; font-weight: 700; color: var(--accent-primary); margin: 24px 0 12px; text-transform: uppercase;">Efficiency Metrics</h4>
+            <div class="metric-group">
+                <div class="metric-item">
+                    <div class="metric-item-label">Cost per Lead</div>
+                    <div class="metric-item-value">AUD XX</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">Target: < AUD 60</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value info">20%</div>
-                    <div class="metric-label">Lead→SQL Rate</div>
+                <div class="metric-item">
+                    <div class="metric-item-label">Lead → SQL Rate</div>
+                    <div class="metric-item-value">XX%</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">Target: 20%+</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value info">30%</div>
-                    <div class="metric-label">Close Rate</div>
+                <div class="metric-item">
+                    <div class="metric-item-label">Cost per SQL</div>
+                    <div class="metric-item-value">AUD XX</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">Target: < AUD 300</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value info">< $1,000</div>
-                    <div class="metric-label">CAC Target</div>
+                <div class="metric-item">
+                    <div class="metric-item-label">SQL Quality Score</div>
+                    <div class="metric-item-value">XX/100</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">Target: 70+ avg</div>
                 </div>
             </div>
 
-            <div class="funnel-steps">
-                <div class="funnel-step">Cold Traffic (Problem-Aware)</div>
-                <div class="funnel-step">Lead Magnet: "15-Minute Profit Audit"</div>
-                <div class="funnel-step">Diagnostic Tool: Interactive profit checker</div>
-                <div class="funnel-step">Webinar: "$50k Savings Audit - Live"</div>
-                <div class="funnel-step">Application: Detailed qualifier</div>
-                <div class="funnel-step">30-min diagnostic call</div>
-                <div class="funnel-step">Proposal: Custom 90-day plan</div>
-                <div class="funnel-step" style="color: var(--accent-info); font-weight: 700;">Close: Consulting engagement</div>
-            </div>
-
-            <div style="margin-top: 20px; padding: 16px; background: rgba(0, 170, 255, 0.1); border-radius: 8px;">
-                <strong style="color: var(--accent-info);">Audience:</strong> Established operators with profit problems<br>
-                <strong style="color: var(--accent-info);">Budget:</strong> 50% (AUD 2,500) - PRIMARY REVENUE<br>
-                <strong style="color: var(--accent-info);">Channels:</strong> Google (high-intent) + Meta (lookalikes) + LinkedIn
-            </div>
-        </div>
-
-        <!-- Funnel 3: Kitchen Design -->
-        <div class="funnel-card" style="background: linear-gradient(135deg, var(--bg-card) 0%, rgba(245, 87, 108, 0.1) 100%);">
-            <div class="funnel-title">
-                <span>3️⃣</span>
-                <span>KITCHEN DESIGN</span>
-                <span class="funnel-price">AUD 25k+</span>
-            </div>
-            <p style="color: var(--text-secondary); margin-bottom: 16px;"><strong>Positioning:</strong> "The kitchen that pays for itself in efficiency gains"</p>
-            
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-value danger">< $80</div>
-                    <div class="metric-label">Target CPL</div>
+            <h4 style="font-size: 16px; font-weight: 700; color: var(--accent-primary); margin: 24px 0 12px; text-transform: uppercase;">Channel Performance</h4>
+            <div class="metric-group">
+                <div class="metric-item">
+                    <div class="metric-item-label">Meta: CPL</div>
+                    <div class="metric-item-value">AUD XX</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">XX leads | XX% SQL rate</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value danger">15%</div>
-                    <div class="metric-label">Lead→SQL Rate</div>
+                <div class="metric-item">
+                    <div class="metric-item-label">Google: CPL</div>
+                    <div class="metric-item-value">AUD XX</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">XX leads | XX% SQL rate</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value danger">20%</div>
-                    <div class="metric-label">Close Rate</div>
+                <div class="metric-item">
+                    <div class="metric-item-label">LinkedIn: CPL</div>
+                    <div class="metric-item-value">AUD XX</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">XX leads | XX% SQL rate</div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value danger">< $2,650</div>
-                    <div class="metric-label">CAC Target</div>
-                </div>
-            </div>
-
-            <div class="funnel-steps">
-                <div class="funnel-step">Trigger Events (Intent Signals)</div>
-                <div class="funnel-step">Retargeting: "Opening new location?"</div>
-                <div class="funnel-step">Case Study: ROI from design</div>
-                <div class="funnel-step">Portfolio: "50 kitchens designed"</div>
-                <div class="funnel-step">Site Visit Booking: Walk the space</div>
-                <div class="funnel-step">Proposal: Design + ROI projection</div>
-                <div class="funnel-step" style="color: var(--accent-danger); font-weight: 700;">Close: Design engagement</div>
-            </div>
-
-            <div style="margin-top: 20px; padding: 16px; background: rgba(255, 51, 102, 0.1); border-radius: 8px;">
-                <strong style="color: var(--accent-danger);">Audience:</strong> New builds, renovations, high-growth<br>
-                <strong style="color: var(--accent-danger);">Budget:</strong> 10% (AUD 500) + cross-sell from consulting<br>
-                <strong style="color: var(--accent-danger);">Channels:</strong> Google (commercial kitchen design) + Meta
-            </div>
-        </div>
-
-        <!-- Funnel 4: Turnkey -->
-        <div class="funnel-card" style="background: linear-gradient(135deg, var(--bg-card) 0%, rgba(255, 170, 0, 0.1) 100%);">
-            <div class="funnel-title">
-                <span>4️⃣</span>
-                <span>TURNKEY OPENING</span>
-                <span class="funnel-price">AUD 50-100k+</span>
-            </div>
-            <p style="color: var(--text-secondary); margin-bottom: 16px;"><strong>Positioning:</strong> "From concept to opening day - Paul runs the entire show"</p>
-            
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-value warning">1-2 deals</div>
-                    <div class="metric-label">Per Quarter</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value warning">< $5,000</div>
-                    <div class="metric-label">CAC Target</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value warning">Referral</div>
-                    <div class="metric-label">Primary Channel</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value warning">5%</div>
-                    <div class="metric-label">Budget (Testing)</div>
-                </div>
-            </div>
-
-            <div class="funnel-steps">
-                <div class="funnel-step">Referral / Paul's Network</div>
-                <div class="funnel-step">60-min Discovery Call: "What's the vision?"</div>
-                <div class="funnel-step">Proposal: Full-scope project plan</div>
-                <div class="funnel-step">Negotiation: Custom pricing</div>
-                <div class="funnel-step" style="color: var(--accent-warning); font-weight: 700;">Close: Retainer + milestones</div>
-            </div>
-
-            <div style="margin-top: 20px; padding: 16px; background: rgba(255, 170, 0, 0.1); border-radius: 8px;">
-                <strong style="color: var(--accent-warning);">Audience:</strong> Ambitious entrepreneurs, funded groups<br>
-                <strong style="color: var(--accent-warning);">Budget:</strong> 5% (AUD 250) - whale hunting<br>
-                <strong style="color: var(--accent-warning);">Channels:</strong> Referral + LinkedIn (C-suite targeting)
-            </div>
-        </div>
-
-        <!-- Week 1 Quick Start -->
-        <div class="section-header">
-            <h2 class="section-title">⚡ Week 1 - Quick Start</h2>
-            <p class="section-subtitle">Start today, get first leads by Friday</p>
-        </div>
-
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-title">DAY 1 (Monday) - TRACKING</div>
-                <div class="timeline-content">
-                    <strong>Morning (2 hours):</strong>
-                    <ul class="checklist" style="margin-top: 8px;">
-                        <li>Create GA4 property: analytics.google.com</li>
-                        <li>Create GTM container: tagmanager.google.com</li>
-                        <li>Install GTM code on ALL pages</li>
-                    </ul>
-                    <strong>Afternoon (2 hours):</strong>
-                    <ul class="checklist" style="margin-top: 8px;">
-                        <li>Set up Meta CAPI basics</li>
-                        <li>Test form tracking (submit test lead)</li>
-                    </ul>
-                    <div class="code-block" style="margin-top: 12px;">
-                        <pre>✓ Success: Tracking fires when you submit a form</pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-title">DAY 2 (Tuesday) - META RETARGETING</div>
-                <div class="timeline-content">
-                    <strong>Setup (3 hours):</strong>
-                    <ul class="checklist" style="margin-top: 8px;">
-                        <li>Campaign: "Retargeting - Month 1"</li>
-                        <li>Ad Set 1: Instagram Engagers (365d) - AUD 200</li>
-                        <li>Ad Set 2: Website Visitors (180d) - AUD 200</li>
-                        <li>Ad Set 3: Video Viewers 95% - AUD 100</li>
-                    </ul>
-                    <div class="code-block" style="margin-top: 12px;">
-                        <pre>Creative: Repurpose Paul's top 3 Instagram posts
-CTA: "Get Your Free Profit Audit"
-Link: start.paulayyash.com (with UTM!)</pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-title">DAY 3 (Wednesday) - GOOGLE SEARCH</div>
-                <div class="timeline-content">
-                    <strong>Setup (2 hours):</strong>
-                    <ul class="checklist" style="margin-top: 8px;">
-                        <li>Campaign 1: Brand Protection - AUD 50/day</li>
-                        <li>Campaign 2: High Intent - AUD 50/day</li>
-                    </ul>
-                    <div class="code-block" style="margin-top: 12px;">
-                        <pre>Brand Keywords: [paul ayyash], [hospo dojo]
-High Intent: "hospitality consultant Australia"
-Negatives: jobs, free, course, training</pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-title">DAY 4-5 (Thu-Fri) - MONITOR & ADJUST</div>
-                <div class="timeline-content">
-                    <strong>Daily Check (15 min):</strong>
-                    <ul class="checklist" style="margin-top: 8px;">
-                        <li>Spend on track? (Target: AUD 170/day)</li>
-                        <li>Any disapproved ads? Fix them</li>
-                        <li>CTR > 1%? Good</li>
-                        <li>CPL < AUD 100? Good (week 1 acceptable)</li>
-                    </ul>
-                    <div style="margin-top: 12px; padding: 16px; background: rgba(0, 255, 136, 0.1); border-radius: 8px; color: var(--accent-primary); font-weight: 700;">
-                        ✓ Week 1 Goal: 5-10 leads by Friday
-                    </div>
+                <div class="metric-item">
+                    <div class="metric-item-label">YouTube: CPL</div>
+                    <div class="metric-item-value">AUD XX</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">XX leads | XX% SQL rate</div>
                 </div>
             </div>
         </div>
 
-        <!-- Campaign Templates Tab System -->
-        <div class="section-header">
-            <h2 class="section-title">📋 Campaign Setup Templates</h2>
-            <p class="section-subtitle">Copy-paste ready for Meta, Google, LinkedIn</p>
-        </div>
-
-        <div class="tabs">
-            <button class="tab active" onclick="switchTab('meta')">Meta Ads</button>
-            <button class="tab" onclick="switchTab('google')">Google Ads</button>
-            <button class="tab" onclick="switchTab('linkedin')">LinkedIn Ads</button>
-        </div>
-
-        <!-- Meta Templates -->
-        <div id="meta-content" class="tab-content active">
-            <div class="template-section">
-                <div class="template-header">
-                    <h3 class="template-title">CAMPAIGN 1: Retargeting (Week 1)</h3>
-                    <button class="copy-button" onclick="copyTemplate('meta-retarget')">COPY</button>
-                </div>
-                <div id="meta-retarget">
-                    <div class="code-block">
-                        <pre><strong>Campaign Name:</strong> Retargeting_PaulAudience_202602
-
-<strong>Campaign Settings:</strong>
-- Objective: Traffic (or Leads if using Lead Forms)
-- Budget: Campaign Budget Optimization (CBO)
-- Daily Budget: AUD 500
-- Campaign Bid Strategy: Lowest Cost
-
-<strong>AD SET 1: Instagram Engagers</strong>
-Name: IGEngagers365d_ProfitAudit
-Audience:
-  - Location: Australia
-  - Age: 25-65
-  - Custom Audience: Instagram - Engaged with Business (365 days)
-  - Exclude: Past Leads (upload list)
-Placements: Automatic (Facebook Feed, Instagram Feed, Stories)
-Optimization: Link Clicks (or Leads if Lead Form)
-
-<strong>AD SET 2: Website Visitors</strong>
-Name: WebsiteVisitors180d_ProfitAudit
-Audience:
-  - Location: Australia
-  - Age: 25-65
-  - Custom Audience: Website Visitors (180 days)
-  - Exclude: Converted Leads
-
-<strong>AD SET 3: Video Viewers</strong>
-Name: VideoViewers95_ProfitAudit
-Audience:
-  - Location: Australia
-  - Age: 25-65
-  - Custom Audience: Video Views 95%
-  - Exclude: Past Leads</pre>
-                    </div>
-                </div>
-
-                <div style="margin-top: 24px;">
-                    <h4 style="color: var(--accent-primary); margin-bottom: 12px;">Ad Creative Template:</h4>
-                    <div class="code-block">
-                        <pre><strong>Primary Text:</strong>
-Most Australian restaurant owners don't realize they're losing $4,000+ every month.
-
-It's not food costs. It's not rent.
-
-It's the 7 "invisible" profit killers hiding in plain sight.
-
-I've audited 500+ hospitality venues. These same issues show up in 90% of businesses.
-
-Want to know if your venue has them?
-
-Get your free 15-minute profit diagnostic.
-
-I'll show you exactly where your money is disappearing - and how to stop it.
-
-No fluff. Just real numbers from your P&L.
-
-👉 Click the link to book your audit.
-
-<strong>Headline:</strong> Find Your Hidden Profit Leaks
-<strong>Description:</strong> Free 15-min diagnostic with Paul
-<strong>CTA Button:</strong> Learn More
-<strong>URL:</strong> https://start.paulayyash.com/profit-audit?utm_source=meta&utm_medium=paid&utm_campaign=retargeting_feb26&utm_content=paul_video_v1</pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Google Templates -->
-        <div id="google-content" class="tab-content">
-            <div class="template-section">
-                <div class="template-header">
-                    <h3 class="template-title">CAMPAIGN 1: Brand Protection</h3>
-                    <button class="copy-button" onclick="copyTemplate('google-brand')">COPY</button>
-                </div>
-                <div id="google-brand">
-                    <div class="code-block">
-                        <pre><strong>Campaign Name:</strong> Search_Brand_Paul_Ayyash_202602
-
-<strong>Campaign Settings:</strong>
-- Campaign Type: Search
-- Goal: Leads
-- Bidding: Maximize Conversions
-- Daily Budget: AUD 50
-- Location: Australia
-- Language: English
-
-<strong>AD GROUP 1: Paul Ayyash</strong>
-
-Keywords (Exact Match):
-[paul ayyash]
-[paul ayyash consulting]
-[paul ayyash hospitality]
-
-<strong>Ad Copy:</strong>
-Headline 1: Paul Ayyash | Official Site
-Headline 2: Hospitality Consulting & Kitchen Design
-Headline 3: Transform Your Venue's Profitability
-
-Description 1: Work directly with Paul. Consulting, mentorship, and commercial kitchen design for Australian hospitality businesses.
-
-Description 2: 500+ venues audited. Add $100k+ to your bottom line. Book your free 15-minute diagnostic call today.
-
-Final URL: https://start.paulayyash.com?utm_source=google&utm_medium=cpc&utm_campaign=brand_paul&utm_content=exact_match</pre>
-                    </div>
-                </div>
+        <div class="dashboard-section">
+            <div class="dashboard-title">
+                <span>🎨</span>
+                <span>Creative Performance</span>
             </div>
 
-            <div class="template-section">
-                <div class="template-header">
-                    <h3 class="template-title">CAMPAIGN 2: High Intent</h3>
-                    <button class="copy-button" onclick="copyTemplate('google-intent')">COPY</button>
-                </div>
-                <div id="google-intent">
-                    <div class="code-block">
-                        <pre><strong>Campaign Name:</strong> Search_HighIntent_Consulting_202602
-<strong>Daily Budget:</strong> AUD 100
-
-<strong>Keywords (Phrase Match):</strong>
-"restaurant consulting Australia"
-"hospitality consultant Sydney"
-"cafe profit consultant"
-"restaurant profitability expert"
-"hospitality operations consultant"
-
-<strong>Negative Keywords (Campaign Level):</strong>
--jobs -job -career -employment -hire -hiring
--course -training -degree -university
--free -template -cheap -software -app
-
-<strong>Ad Copy:</strong>
-Headline 1: Restaurant Profitability Expert
-Headline 2: Add $100k+ to Your Bottom Line
-Headline 3: 500+ Australian Venues Optimized
-
-Description 1: Struggling with profit margins? Paul Ayyash optimizes operations, reduces waste, and systematizes your hospitality business.
-
-Description 2: Free 15-minute profit audit. Discover where your money is leaking. Serving independent operators across Australia.</pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- LinkedIn Templates -->
-        <div id="linkedin-content" class="tab-content">
-            <div class="template-section">
-                <div class="template-header">
-                    <h3 class="template-title">CAMPAIGN: Sniper Targeting</h3>
-                    <button class="copy-button" onclick="copyTemplate('linkedin-sniper')">COPY</button>
-                </div>
-                <div id="linkedin-sniper">
-                    <div class="code-block">
-                        <pre><strong>Campaign Name:</strong> LinkedIn_Cold_Owners_202602
-
-<strong>Campaign Settings:</strong>
-- Objective: Lead Generation (use native forms)
-- Daily Budget: AUD 75
-- Bid Strategy: Maximum Delivery
-
-<strong>AUDIENCE:</strong>
-
-Job Titles (Include):
-Owner, Founder, Co-Founder, Managing Director
-General Manager, Operations Manager, CEO, Director, Partner
-
-Job Functions: Management, Business Development
-Industries: Restaurants, Food & Beverage Services, Hospitality
-Company Size: 11-50, 51-200, 201-500 employees
-Location: Australia
-Age: 25-65
-
-<strong>EXCLUSIONS:</strong>
-Job Seniority: Entry Level, Training, Unpaid
-Job Titles (Exclude): Student, Intern, Assistant, Coordinator
-Server, Waiter, Waitress, Chef, Cook</pre>
-                    </div>
-
-                    <h4 style="color: var(--accent-primary); margin: 24px 0 12px;">Ad Copy:</h4>
-                    <div class="code-block">
-                        <pre><strong>Intro Text:</strong>
-Restaurant/cafe owners: Are you working 80-hour weeks for slim-to-no profit?
-
-You're not alone. Most independent operators in Australia face the same challenge.
-
-But here's the truth: It's fixable.
-
-I'm Paul Ayyash. I've audited 500+ hospitality venues across Australia.
-
-The same profit killers show up in 9 out of 10 businesses:
-• Inefficient kitchen workflows costing $5k+/month
-• Menu pricing that leaves money on the table
-• Staff scheduling that bleeds overtime
-• Food costs creeping above 35%
-
-The good news? These are systematic problems with systematic solutions.
-
-I work with independent operators and small groups to:
-→ Optimize operations
-→ Systematize workflows  
-→ Add $50k-$200k to annual profit
-
-If you're ready to get off the floor and actually run a profitable business...
-
-Book a 15-minute diagnostic call. I'll show you exactly where your profit is leaking.
-
-No pitch. Just real insights from your numbers.
-
-👉 Click "Learn More" to book your free audit.
-
-<strong>Headline:</strong> Transform Your Hospitality Business
-<strong>CTA Button:</strong> Learn More
-<strong>URL:</strong> https://start.paulayyash.com/consulting?utm_source=linkedin&utm_medium=paid&utm_campaign=cold_owners&utm_content=owner_cold_v1</pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 30-Day Checklist -->
-        <div class="section-header">
-            <h2 class="section-title">✅ Your First 30 Days</h2>
-            <p class="section-subtitle">Complete checklist for Month 1</p>
-        </div>
-
-        <div class="board-grid">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="card-icon">📅</span>
-                        WEEK 1: Foundation
-                    </h3>
-                    <span class="card-badge badge-priority">START HERE</span>
-                </div>
-                <ul class="checklist">
-                    <li>GA4 + GTM installed</li>
-                    <li>Meta retargeting live</li>
-                    <li>Google Search live</li>
-                    <li>First 5+ leads generated</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="card-icon">📅</span>
-                        WEEK 2: Quality
-                    </h3>
-                    <span class="card-badge badge-info">BUILD</span>
-                </div>
-                <ul class="checklist">
-                    <li>LinkedIn campaign launched</li>
-                    <li>First shoot with Paul (5 videos)</li>
-                    <li>CRM scoring implemented</li>
-                    <li>First 2+ SQLs qualified</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="card-icon">📅</span>
-                        WEEK 3: Scale
-                    </h3>
-                    <span class="card-badge badge-success">GROW</span>
-                </div>
-                <ul class="checklist">
-                    <li>Budget increased (best performers)</li>
-                    <li>Cold traffic launched</li>
-                    <li>Offline conversion upload</li>
-                    <li>15+ total leads</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="card-icon">📅</span>
-                        WEEK 4: Optimize
-                    </h3>
-                    <span class="card-badge badge-warning">REFINE</span>
-                </div>
-                <ul class="checklist">
-                    <li>Creative refresh #2</li>
-                    <li>Multi-product test</li>
-                    <li>Month 1 review meeting</li>
-                    <li>Month 2 plan approved</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Friday Scorecard -->
-        <div class="section-header">
-            <h2 class="section-title">📊 Weekly Friday Scorecard</h2>
-            <p class="section-subtitle">Track these metrics every Friday</p>
-        </div>
-
-        <div class="template-section">
             <div class="code-block">
-                <pre><strong>WEEK X SCORECARD:</strong>
+                <pre>BEST PERFORMERS THIS WEEK:
 
-<strong>VOLUME:</strong>
-- Spend: AUD ___ / AUD 1,250 (target)
-- Leads: ___ (Target: 15-20/week)
-- SQLs: ___ (Target: 3-5/week)
+Video:    Paul_ProfitKiller_V2 | CTR: 3.2% | CPL: AUD 42
+Static:   7_Mistakes_Carousel  | CTR: 2.1% | CPL: AUD 55
+Copy:     "Losing $4k/month"   | CTR: 2.8% | CPL: AUD 48
 
-<strong>EFFICIENCY:</strong>
-- CPL: AUD ___ (Target: < AUD 60)
-- Cost per SQL: AUD ___ (Target: < AUD 300)
-- SQL Rate: ___% (Target: > 20%)
+REFRESH NEEDED (Frequency > 3.0):
+Video:    Kitchen_Tour_V1      | Frequency: 3.4 | Declining CTR
+Static:   Testimonial_Mark     | Frequency: 3.8 | CPL rising</pre>
+            </div>
 
-<strong>CHANNEL WINNERS:</strong>
-Meta:     ___ leads @ AUD ___ CPL
-Google:   ___ leads @ AUD ___ CPL
-LinkedIn: ___ leads @ AUD ___ CPL
-
-<strong>ACTIONS NEXT WEEK:</strong>
-Scale: ___
-Kill: ___
-Test: ___</pre>
+            <div style="margin-top: 16px; padding: 16px; background: rgba(255, 170, 0, 0.1); border-radius: 8px;">
+                <strong style="color: var(--accent-warning);">Creative Refresh Rule:</strong> Every 10-14 days or when frequency > 3.0
             </div>
         </div>
 
-        <!-- Month 1 Success Criteria -->
+        <!-- Photo Sections -->
         <div class="section-header">
-            <h2 class="section-title">🎯 Month 1 Success = This</h2>
-            <p class="section-subtitle">Must hit to scale to Month 2</p>
+            <h2 class="section-title">📸 Supporting Visuals</h2>
+            <p class="section-subtitle">Add screenshots, charts, and campaign examples here</p>
         </div>
 
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <div class="metric-value primary">15+ SQLs</div>
-                <div class="metric-label">Total Generated</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value primary">< $400</div>
-                <div class="metric-label">Cost per SQL</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value primary">1 Channel</div>
-                <div class="metric-label">< $300 per SQL</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value primary">2+ Calls</div>
-                <div class="metric-label">Booked & Qualified</div>
+        <div class="photo-placeholder">
+            <div class="photo-placeholder-icon">📊</div>
+            <div class="photo-placeholder-text">
+                <strong>Performance Dashboard Screenshot</strong><br>
+                Weekly metrics, channel breakdown, trend graphs
             </div>
         </div>
 
-        <div style="margin-top: 32px; padding: 32px; background: var(--gradient-4); border-radius: 16px; text-align: center;">
-            <h3 style="font-size: 36px; font-weight: 800; color: var(--bg-dark); margin-bottom: 16px;">
-                ✓ If you hit these → Scale to AUD 7,500 in Month 2
-            </h3>
-            <p style="font-size: 18px; color: var(--bg-dark); opacity: 0.8;">
-                If not → Diagnose and fix before scaling
+        <div class="photo-placeholder">
+            <div class="photo-placeholder-icon">🎨</div>
+            <div class="photo-placeholder-text">
+                <strong>Top Performing Creative Examples</strong><br>
+                Best Meta ads, Google ad copy, LinkedIn posts
+            </div>
+        </div>
+
+        <div class="photo-placeholder">
+            <div class="photo-placeholder-icon">📈</div>
+            <div class="photo-placeholder-text">
+                <strong>Funnel Conversion Rates</strong><br>
+                Visual funnel showing Lead → SQL → Call → Close rates
+            </div>
+        </div>
+
+        <div class="photo-placeholder">
+            <div class="photo-placeholder-icon">💼</div>
+            <div class="photo-placeholder-text">
+                <strong>LinkedIn Targeting Screenshot</strong><br>
+                Audience setup, job title targeting, company size filters
+            </div>
+        </div>
+
+        <!-- Footer CTA -->
+        <div style="margin-top: 80px; padding: 60px; background: var(--gradient-4); border-radius: 24px; text-align: center;">
+            <h2 style="font-size: 64px; font-weight: 800; color: var(--bg-dark); margin-bottom: 24px;">
+                🚀 Ready to Execute
+            </h2>
+            <p style="font-size: 24px; color: var(--bg-dark); margin-bottom: 32px; opacity: 0.8;">
+                This is my roadmap for the next 90 days
             </p>
-        </div>
-
-        <!-- Common Mistakes -->
-        <div class="section-header">
-            <h2 class="section-title">⚠️ Common Mistakes to Avoid</h2>
-            <p class="section-subtitle">Learn from past failures</p>
-        </div>
-
-        <div class="board-grid">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="card-icon">❌</span>
-                        DON'T DO THIS
-                    </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto;">
+                <div style="background: rgba(0, 0, 0, 0.1); padding: 24px; border-radius: 12px;">
+                    <div style="font-size: 48px; margin-bottom: 8px;">✓</div>
+                    <div style="font-weight: 700; color: var(--bg-dark);">Math is right</div>
                 </div>
-                <ul class="checklist">
-                    <li>Launch cold traffic Week 1 (warm up first!)</li>
-                    <li>Optimize for "leads" in platform (optimize for SQLs!)</li>
-                    <li>Let bad ads run (kill fast!)</li>
-                    <li>Ignore SQL quality scores (volume ≠ success)</li>
-                    <li>Skip tracking setup (you'll regret it!)</li>
-                </ul>
+                <div style="background: rgba(0, 0, 0, 0.1); padding: 24px; border-radius: 12px;">
+                    <div style="font-size: 48px; margin-bottom: 8px;">✓</div>
+                    <div style="font-weight: 700; color: var(--bg-dark);">ICPs defined</div>
+                </div>
+                <div style="background: rgba(0, 0, 0, 0.1); padding: 24px; border-radius: 12px;">
+                    <div style="font-size: 48px; margin-bottom: 8px;">✓</div>
+                    <div style="font-weight: 700; color: var(--bg-dark);">Tech stack ready</div>
+                </div>
+                <div style="background: rgba(0, 0, 0, 0.1); padding: 24px; border-radius: 12px;">
+                    <div style="font-size: 48px; margin-bottom: 8px;">✓</div>
+                    <div style="font-weight: 700; color: var(--bg-dark);">Budget allocated</div>
+                </div>
             </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="card-icon">✅</span>
-                        DO THIS INSTEAD
-                    </h3>
-                </div>
-                <ul class="checklist">
-                    <li class="checked">Start with retargeting (cheapest, fastest)</li>
-                    <li class="checked">Upload offline conversions weekly</li>
-                    <li class="checked">Refresh creative every 10-14 days</li>
-                    <li class="checked">Score every lead within 24 hours</li>
-                    <li class="checked">Kill underperformers ruthlessly</li>
-                </ul>
+            <div style="margin-top: 40px; font-size: 28px; font-weight: 800; color: var(--bg-dark);">
+                Let's make it happen! 💪
             </div>
         </div>
 
-    <script>
-        // Tab Switching
-        function switchTab(tabName) {
-            // Hide all tab contents
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            // Remove active class from all tabs
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => tab.classList.remove('active'));
-
-            // Show selected tab content
-            document.getElementById(tabName + '-content').classList.add('active');
-
-            // Add active class to clicked tab
-            event.target.classList.add('active');
-        }
-
-        // Copy Template Function
-        function copyTemplate(elementId) {
-            const element = document.getElementById(elementId);
-            const text = element.innerText;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                // Visual feedback
-                const button = event.target;
-                const originalText = button.textContent;
-                button.textContent = 'COPIED! ✓';
-                button.style.background = 'var(--accent-primary)';
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = 'var(--accent-primary)';
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy:', err);
-                alert('Failed to copy. Please select and copy manually.');
-            });
-        }
-
-        // Smooth scroll for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Add hover effect to cards
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-    </script>
+        <!-- Attribution Notice -->
+        <div style="margin-top: 40px; padding: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 14px;">
+            <p>HOSPO DOJO Performance Marketing Strategy</p>
+            <p style="margin-top: 8px;">Presented by Daniel Bogdantsev | Q1 2026</p>
+            <p style="margin-top: 8px;">Max CAC: AUD 1,000 | Target CPL: < AUD 60 | Growth: 20-30% monthly</p>
+        </div>
+    </div>
 </body>
 </html>
